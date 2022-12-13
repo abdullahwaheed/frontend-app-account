@@ -1,14 +1,8 @@
 name: Update Browserlist DB
 on:
   schedule:
-    - cron:  '0 0 * * 1'
+    - cron:  '*/5 * * * *'
   workflow_dispatch:
-
-env:
-  PR_TITLE: Update browserslist DB
-  COMMIT_MESSAGE: "chore: update browserslist"
-  PR_BODY: Updated browserlist DB
-  BRANCH_NAME: "update-browserslist"
 
 jobs:
   update-dep:
