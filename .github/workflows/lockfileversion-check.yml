@@ -23,9 +23,9 @@ jobs:
       run: |
         cat package-lock.json | grep '\"lockfileVersion\": 2,'
         cat package-lock.json | grep '\"lockfileVersion\": 2,' > ${{ env.VERSION }}
-        echo "version is ------------------------------------------------------------------------> $env.VERSION "
+        echo "version is ------------------------------------------------------------------------> ${{ env.VERSION }} "
     - name: check value
-      if: env.VERSION == null
+      if: ${{ env.VERSION == null }}
       run: |
-        echo "ERROR: $env.VERSION Outdated package-lock file. Use NPM8 to install dependencies "
+        echo "ERROR: Outdated package-lock file. Use NPM8 to install dependencies "
         exit 1
