@@ -19,7 +19,7 @@ jobs:
     - name: Retrieve version
       id: getversion
       run: |
-        echo "VERSION=$(cat package-lock.json | grep '\"lockfileVersion\": 3,')" >> $GITHUB_ENV
+        echo "VERSION=$(cat package-lock.json | grep '\"lockfileVersion\": 2,')" >> $GITHUB_ENV
         echo "${{ env.VERSION }}";
     - name: check value
       if: ${{ env.VERSION == null }}
