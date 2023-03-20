@@ -21,7 +21,8 @@ jobs:
     - name: Retrieve version
       id: getversion
       run: |
-        cat package-lock.json | grep '\"lockfileVersion\": 2,' > ${{ env.MY_VAR }}
+        cat package-lock.json | grep '\"lockfileVersion\": 2,'
+        cat package-lock.json | grep '\"lockfileVersion\": 2,' > ${{ env.VERSION }}
         echo "version is ------------------------------------------------------------------------> $env.VERSION "
     - name: check value
       if: env.VERSION == null
