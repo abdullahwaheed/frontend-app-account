@@ -26,5 +26,5 @@ jobs:
     - name: check value
       if: env.VERSION == null
       run: |
-        echo "ERROR: Outdated package-lock file. Use NPM8 to install dependencies "
+        echo "ERROR: $env.VERSION Outdated package-lock file. Use NPM8 to install dependencies "
         exit 1
