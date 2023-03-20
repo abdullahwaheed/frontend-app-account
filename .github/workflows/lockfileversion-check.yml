@@ -21,11 +21,11 @@ jobs:
     - name: Retrieve version
       id: getversion
       run: |
-        cat package-lock.json | grep '\"lockfileVersion\": 2,'
-        cat package-lock.json | grep '\"lockfileVersion\": 2,' > ${{ env.VERSION }}
-        echo "version is ------------------------------------------------------------------------> ${{ env.VERSION }} "
+        cat package-lock.json | grep '\"lockfileVersion\": 2,';
+        cat package-lock.json | grep '\"lockfileVersion\": 2,' >> ${{ env.VERSION }};
+        echo "version is ------------------------------------------------------------------------> ${{ env.VERSION }} ";
     - name: check value
       if: ${{ env.VERSION == null }}
       run: |
-        echo "ERROR: Outdated package-lock file. Use NPM8 to install dependencies "
+        echo "ERROR: Outdated package-lock file. Use NPM8 to install dependencies ";
         exit 1
