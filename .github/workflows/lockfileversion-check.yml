@@ -21,10 +21,10 @@ jobs:
     - name: Retrieve version
       id: getversion
       run: |
-        cat package-lock.json | grep '\"lockfileVersion\": 2,' >> $VERSION;
+        cat package-lock.json | grep '\"lockfileVersion\": 2,' >> "$VERSION";
         echo "$VERSION"
     - name: check value
-      if: $VERSION == null
+      if: ${{ VERSION == null }}
       run: |
         echo "ERROR: Outdated package-lock file. Use NPM8 to install dependencies ";
         exit 1
