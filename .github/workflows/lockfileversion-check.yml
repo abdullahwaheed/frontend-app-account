@@ -7,8 +7,24 @@ on:
     branches:
     - master
   pull_request:
+  workflow_dispatch:
 
 jobs:
   version-check:
-    uses: openedx/.github/.github/workflows/lockfileversion-check.yml@master
-    
+    runs-on:  ubuntu-20.04
+    env:
+      VERSION: null
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+
+    - name: Retrieve version
+      id: getversion
+      run: |
+        cat package-lock.json | grep '\"lockfileVersion\": 2,' > env.VERSION
+
+    - name: check value
+      if: env.VERSION == null
+      run: |
+        echo "ERROR: Outdated package-lock file. Use NPM8 to install dependencies "
+        exit 1
